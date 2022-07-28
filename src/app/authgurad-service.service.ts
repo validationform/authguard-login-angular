@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthguradServiceService {
 
-  constructor() { }
-  isUserLogin(){  
-    return !!localStorage.getItem("token");  
-    } 
+  constructor(private routes: Router) {}
+
+  isUserLogin(): boolean {
+    //return !!this.routes.navigate(['/home']);
+    return localStorage.getItem('token') === 'true';
+  }
 }

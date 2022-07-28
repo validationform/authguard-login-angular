@@ -12,12 +12,15 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
+
 export class AuthenticationGuard implements CanActivate {
+
   constructor(
     private Authguardservice: AuthguradServiceService,
     private router: Router
   ) {}
 
+  //canActivate() method always return boolean value
   canActivate(): boolean {
     if (!this.Authguardservice.isUserLogin()) {
       return true;

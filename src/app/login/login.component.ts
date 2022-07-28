@@ -10,14 +10,17 @@ export class LoginComponent implements OnInit {
   message: string = '';
   constructor(private routes: Router) {}
   
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    localStorage.setItem('token','true');
+  }
   
-  check(uname: string, password: string) {
-    localStorage.setItem('token','');
-
-    if (uname === 'admin' && password === 'admin123') {
+  check(userName: string, password: string) {
+   
+    if (userName === 'admin' && password === 'admin123') {
       this.routes.navigate(['/home']);
-    } else {
+      localStorage.setItem('token','false');
+    } 
+    else {
       this.message = 'Invalid username or password';
     }
   }
